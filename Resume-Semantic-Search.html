@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Semantic Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">SkillCatalyst</h1>
+        <form method="POST" action="/search">
+            <div class="form-group">
+                <label for="query">Enter Your Search Criteria::</label>
+                <input type="text" class="form-control" id="query" name="query" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        {% if query %}
+            <h2 class="mt-5">List of Resumes:</h2>
+            {% if resumes %}
+                <ul class="list-group">
+                    {% for resume in resumes %}
+                        <li class="list-group-item">{{ resume }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No relevant resumes found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
